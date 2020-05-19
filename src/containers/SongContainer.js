@@ -6,8 +6,14 @@ class SongContainer extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            songs: []
+            songs: [],
+            selectedSongTitle: ''
         }
+        this.handleSongSelected = this.handleSongSelected.bind(this);
+    }
+
+    handleSongSelected(songTitle){
+        this.setState({selectedSongTitle: songTitle})
     }
 
     componentDidMount(){
@@ -15,7 +21,7 @@ class SongContainer extends React.Component{
 
         fetch(url)
         .then(res => res.json())
-        .then(songs => this.setState({songs: songs}))
+        .then(songs => this.setState({songs: songs.feed.entry}))
         .catch(err => console.err(err))
     }
 
@@ -23,7 +29,12 @@ class SongContainer extends React.Component{
         return(
             <>
             <h1>this is the song container</h1>
-            <SongSelector></SongSelector>
+
+            <SongSelector 
+            songs={this.state.songs}
+            onSongSelected={this.handleSongSelected}>
+            </SongSelector>
+
             <SongDetail></SongDetail>
             </>
         )
