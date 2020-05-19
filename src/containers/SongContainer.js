@@ -16,6 +16,8 @@ class SongContainer extends React.Component{
         this.setState({selectedSongTitle: songTitle})
     }
 
+
+
     componentDidMount(){
         const url = "https://itunes.apple.com/gb/rss/topsongs/limit=20/json";
 
@@ -26,16 +28,22 @@ class SongContainer extends React.Component{
     }
 
     render(){
+
+        const selectedSong = this.state.songs.find(song => {
+            return song.title.label === this.state.selectedSongTitle
+        });
+
         return(
             <>
-            <h1>this is the song container</h1>
+            <h1>Top 20 Singles</h1>
 
             <SongSelector 
             songs={this.state.songs}
             onSongSelected={this.handleSongSelected}>
             </SongSelector>
 
-            <SongDetail></SongDetail>
+            <SongDetail
+            song={selectedSong}></SongDetail>
             </>
         )
     }

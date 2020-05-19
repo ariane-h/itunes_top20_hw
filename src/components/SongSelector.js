@@ -6,7 +6,7 @@ const SongSelector = (props) => {
     const options = props.songs.map( song => {
       return <option 
               value={song.title.label} 
-              key={song.id}
+              key={song.title.label}
               >
                 {song.title.label}
               </option>
