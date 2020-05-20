@@ -1,0 +1,10 @@
+.media-container{
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+}
+
+img{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

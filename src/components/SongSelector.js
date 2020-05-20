@@ -17,10 +17,12 @@ const SongSelector = (props) => {
    }
   
     return (
-      <select id="song-selector" defaultValue="default" onChange={handleChange} > 
-        <option disabled value="default">Choose a song...</option>
-        {options}
-      </select>
+        <div className="song-selector">
+            <select id="song-selector" defaultValue="default" onChange={handleChange} > 
+                <option disabled value="default">Choose a song...</option>
+                {options}
+            </select>
+        </div>
     )
 
 }

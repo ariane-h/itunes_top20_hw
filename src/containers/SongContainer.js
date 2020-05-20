@@ -1,6 +1,7 @@
 import React from 'react';
 import SongSelector from '../components/SongSelector';
 import SongDetail from '../components/SongDetail';
+import './SongContainer.css'
 
 class SongContainer extends React.Component{
     constructor(props){
@@ -8,6 +9,7 @@ class SongContainer extends React.Component{
         this.state = {
             songs: [],
             selectedSongTitle: ''
+            
         }
         this.handleSongSelected = this.handleSongSelected.bind(this);
     }
@@ -15,7 +17,6 @@ class SongContainer extends React.Component{
     handleSongSelected(songTitle){
         this.setState({selectedSongTitle: songTitle})
     }
-
 
 
     componentDidMount(){
@@ -31,20 +32,20 @@ class SongContainer extends React.Component{
 
         const selectedSong = this.state.songs.find(song => {
             return song.title.label === this.state.selectedSongTitle
-        });
+        }); 
 
         return(
-            <>
-            <h1>Top 20 Singles</h1>
+            <div className="song-container">
+                <h1>Top 20 Singles</h1>
 
-            <SongSelector 
-            songs={this.state.songs}
-            onSongSelected={this.handleSongSelected}>
-            </SongSelector>
+                <SongSelector 
+                songs={this.state.songs}
+                onSongSelected={this.handleSongSelected}>
+                </SongSelector>
 
-            <SongDetail
-            song={selectedSong}></SongDetail>
-            </>
+                <SongDetail
+                song={selectedSong}></SongDetail>
+            </div>
         )
     }
 
